@@ -31,3 +31,40 @@ Rational Rational::operator+(const Rational& a) const {
     sum.denominator = a.denominator * denominator;
     return sum;
 }
+
+
+// prefix increment operator
+Rational& Rational::operator++(){
+    numerator = numerator + denominator;
+    return *this;
+}
+
+// postfix increment operator
+//Note: postfix operator uses a dummy int parameter
+Rational Rational::operator++(int){
+    Rational temp = *this;
+    numerator = numerator + denominator;
+    return temp;
+}
+
+
+Rational::operator double(){
+    return numerator / (double)denominator;
+}
+
+const Rational& Rational::operator=(const Rational &r){
+    numerator = r.numerator;
+    denominator = r.denominator;
+    return *this;
+}
+
+//const Rational& Rational::operator=(const Rational& r){
+//    if (&r != this){
+//        delete numerator;
+//        delete denominator;
+//        (int*)numerator = new int (r.numerator);
+//        (int*)denominator = new int (r.denominator);
+//    }
+//
+//    return *this;
+//}
